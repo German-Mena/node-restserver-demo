@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', (req, res){
+app.get('/', (req, res) => {
   res.send('Pagina principal')
 })
 
@@ -18,24 +18,24 @@ app.get('/usuario', function (req, res) {
 })
 
 app.post('/usuario', function (req, res) {
-  
+
   //capturo los parametros del POST
   let body = req.body;
 
   // Manejo los errores
   if (body.nombre === undefined) {
-    
+
     res.status(400).json({
       ok: false,
       msg: 'El nombre de la persona es necesario'
     })
 
   } else {
-    
+
     res.json({
       persona: body
     })
-    
+
   }
 
   //res.send('Hola mundo!')
@@ -43,9 +43,9 @@ app.post('/usuario', function (req, res) {
 })
 
 app.put('/usuario/:id', function (req, res) {
-  
-  let id = req.params.id  
-  
+
+  let id = req.params.id
+
   //res.send('Hola mundo!')
   res.json({
     id

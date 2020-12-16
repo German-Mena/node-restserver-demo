@@ -42,7 +42,7 @@ app.get('/usuario', function (req, res) {
             }
 
             //En este momento, estoy contando solo los que esten con estado activo
-            Usuario.count({ estado: true }, (err, cantidad) => {
+            Usuario.countDocuments({ estado: true }, (err, cantidad) => {
 
                 if (err) {
                     return res.status(400).json({

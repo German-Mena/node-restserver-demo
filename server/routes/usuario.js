@@ -26,7 +26,6 @@ app.get('/usuario', function (req, res) {
     //dentro de {} puedo agregar la condicion para filtrar y traer solo los registros que me interesan
     //despues de la condicion, puedo especificar cuales son los campos que me intersan, por ejemplo : 'nombre apellido edad'
 
-
     //En este momento, estoy trayendo solo los que esten con estado activo
     Usuario.find({ estado: true }, 'nombre role')
         .skip(desde) // ignoro los primeros 5 registros

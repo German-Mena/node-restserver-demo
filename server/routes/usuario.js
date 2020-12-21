@@ -6,14 +6,14 @@ const _ = require('underscore')
 const app = express()
 
 const Usuario = require('../models/usuario')
-const usuario = require('../models/usuario')
+const { verificaToken, verificaAdminRole } = require('../middlewares/autenticacion')
 
 // Esto seria el home
 app.get('/', (req, res) => {
     res.send('Pagina principal')
 })
 
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verificaToken, (req, res) => {
 
     // DUDA: cuando son parametros opcionales uso req.query???
 
@@ -60,7 +60,7 @@ app.get('/usuario', function (req, res) {
         })
 })
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario', [verificaToken, verificaAdminRole], function (req, res) {
 
     //capturo los parametros del POST
     let body = req.body;
@@ -112,7 +112,7 @@ app.post('/usuario', function (req, res) {
 
 })
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', [verificaToken, verificaAdminRole], function (req, res) {
 
     let id = req.params.id
 
@@ -177,7 +177,7 @@ app.put('/usuario/:id', function (req, res) {
     })
 })
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', verificaToken, function (req, res) {
 
     let id = req.params.id
 

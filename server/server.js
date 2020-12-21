@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // De esta forma uso las rutas
-app.use(require('./routes/usuario'))
+app.use(require('./routes/index'))
+
 
 // lo que esta despues del puerto (27017), es el nombre que le asigno a la BD
 //'mongodb://localhost:27017/test'

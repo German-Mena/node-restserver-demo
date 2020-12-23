@@ -56,5 +56,5 @@ usuarioSchema.plugin(uniqueValidator, {
     message: '{PATH} tiene que ser unico'
 })
 
-// De esta forma exporto el modelo, vinculando al nombre 'Usuario', el esquema 'usuarioSchema
+// De esta forma exporto el modelo, vinculando al nombre 'Usuario', el esquema 'usuarioSchema'
 module.exports = mongoose.model('Usuario', usuarioSchema)

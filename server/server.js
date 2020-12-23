@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const bodyParser = require('body-parser')
+const path = require('path')
 
 // Seteo los midlewares
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -11,6 +12,9 @@ app.use(bodyParser.json())
 
 // De esta forma uso las rutas
 app.use(require('./routes/index'))
+
+// Habilito la carpeta public
+app.use(express.static(path.resolve(__dirname, '../public')))
 
 
 // lo que esta despues del puerto (27017), es el nombre que le asigno a la BD

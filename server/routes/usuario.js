@@ -9,9 +9,9 @@ const Usuario = require('../models/usuario')
 const { verificaToken, verificaAdminRole } = require('../middlewares/autenticacion')
 
 // Esto seria el home
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.send('Pagina principal')
-})
+}) */
 
 app.get('/usuario', verificaToken, (req, res) => {
 
@@ -27,7 +27,7 @@ app.get('/usuario', verificaToken, (req, res) => {
     //despues de la condicion, puedo especificar cuales son los campos que me intersan, por ejemplo : 'nombre apellido edad'
 
     //En este momento, estoy trayendo solo los que esten con estado activo
-    Usuario.find({ estado: true }, 'nombre role')
+    Usuario.find({ estado: true }, 'nombre email role')
         .skip(desde) // ignoro los primeros 5 registros
         .limit(limite) // muestro solo 5 registros
         .exec((err, usuarios) => {
